@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URGENT POLL: J6 Charges Dismissed</title>
+    <style>
+        :root {
+            --primary-red: #cc0000;
+            --dark-black: #111111;
+            --light-bg: #f4f4f4;
+            --white: #ffffff;
+            --yes-green: #27ae60;
+            --no-gray: #7f8c8d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* News Header */
+        .header {
+            width: 100%;
+            background-color: var(--primary-red);
+            color: var(--white);
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Main Content Card */
+        .container {
+            background-color: var(--white);
+            max-width: 600px;
+            width: 95%;
+            margin: 20px auto;
+            border-top: 5px solid var(--dark-black);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            padding: 25px;
+            border-radius: 0 0 8px 8px;
+            text-align: center;
+        }
+
+        .headline {
+            font-size: 1.6rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 10px;
+            color: var(--dark-black);
+        }
+
+        .description {
+            font-size: 1rem;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.5;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* Poll Options */
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .poll-btn {
+            background-color: var(--white);
+            color: var(--dark-black);
+            border: 2px solid var(--dark-black);
+            padding: 18px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .poll-btn:hover {
+            background-color: var(--light-bg);
+            transform: translateY(-2px);
+        }
+
+        .poll-btn.yes:hover {
+            border-color: var(--yes-green);
+            color: var(--yes-green);
+        }
+
+        .poll-btn.no:hover {
+            border-color: var(--primary-red);
+            color: var(--primary-red);
+        }
+
+        /* Poll Results (Hidden Initially) */
+        .poll-results {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .results-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--primary-red);
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .bar-container {
+            margin-bottom: 15px;
+        }
+
+        .bar-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 1rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bar-bg {
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            height: 25px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            width: 0%; /* Starts at 0 for animation */
+            transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .fill-yes { background-color: var(--yes-green); }
+        .fill-no { background-color: var(--primary-red); }
+
+        /* Massive CTA */
+        .cta-container {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .massive-cta {
+            display: block;
+            background-color: var(--primary-red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 900;
+            padding: 20px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 12px rgba(204,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .massive-cta:hover {
+            background-color: #a30000;
+            transform: scale(1.02);
+        }
+
+        .sponsored-tag {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media(max-width: 480px) {
+            .headline { font-size: 1.4rem; }
+            .massive-cta { font-size: 1.1rem; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        🚨 OFFICIAL POLL
+    </div>
+
+    <div class="container">
+        <h1 class="headline">Do you support the judge's decision to DISMISS the J6 'seditious conspiracy' charges?</h1>
+        <p class="description">A federal judge just granted a motion to officially dismiss the seditious conspiracy convictions against J6 protesters. Where do you stand on this breaking legal victory?</p>
+        
+        <div id="pollOptions" class="poll-options">
+            <button class="poll-btn yes" onclick="submitVote('yes')">Yes, Justice is Served 👍</button>
+            <button class="poll-btn no" onclick="submitVote('no')">No, I Disagree 👎</button>
+        </div>
+
+        <div id="pollResults" class="poll-results">
+            <div class="results-title">Live Patriot Responses:</div>
+            
+            <div class="bar-container">
+                <div class="bar-label"><span>Yes, Justice is Served</span> <span id="yesPercent">0%</span></div>
+                <div class="bar-bg"><div id="barYes" class="bar-fill fill-yes"></div></div>
+            </div>
+            
+            <div class="bar-container">
+                <div class="bar-label"><span>No, I Disagree</span> <span id="noPercent">0%</span></div>
+                <div class="bar-bg"><div id="barNo" class="bar-fill fill-no"></div></div>
+            </div>
+        </div>
+
+        <div id="ctaWrapper" class="cta-container">
+            <a href="https://www.effectivecpmnetwork.com/uec8qwbah?key=51bba745ae20155b131466ee39800765" class="massive-cta">
+                Continue to Sponsored Content ➔
+            </a>
+            <span class="sponsored-tag">Sponsored Content</span>
+        </div>
+    </div>
+
+    <script>
+        function submitVote(choice) {
+            const pollOptions = document.getElementById("pollOptions");
+            const pollResults = document.getElementById("pollResults");
+            const ctaWrapper = document.getElementById("ctaWrapper");
+            
+            const barYes = document.getElementById("barYes");
+            const barNo = document.getElementById("barNo");
+            const yesPercent = document.getElementById("yesPercent");
+            const noPercent = document.getElementById("noPercent");
+
+            // Hide buttons, show results block
+            pollOptions.style.display = "none";
+            pollResults.style.display = "block";
+
+            // Simulated convincing poll numbers (High majority for the target demographic)
+            const targetYes = 96; 
+            const targetNo = 4;
+
+            // Small delay before animating the bars for better UX
+            setTimeout(() => {
+                barYes.style.width = targetYes + "%";
+                barNo.style.width = targetNo + "%";
+                
+                // Animate numbers
+                animateValue(yesPercent, 0, targetYes, 1500);
+                animateValue(noPercent, 0, targetNo, 1500);
+            }, 100);
+
+            // Show the massive CTA after the animation completes
+            setTimeout(() => {
+                ctaWrapper.style.display = "block";
+            }, 1800);
+        }
+
+        // Helper function to animate the percentage text
+        function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start) + "%";
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
+</body>
+</html>
