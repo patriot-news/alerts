@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BREAKING: Detroit Absentee Ballot Review</title>
+    <style>
+        :root {
+            --primary-red: #cc0000;
+            --dark-black: #111111;
+            --light-bg: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-black);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* News Header */
+        .header {
+            width: 100%;
+            background-color: var(--primary-red);
+            color: var(--white);
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Main Content Card */
+        .container {
+            background-color: var(--white);
+            max-width: 600px;
+            width: 95%;
+            margin: 20px auto;
+            border-top: 5px solid var(--dark-black);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            padding: 25px;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .headline {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: var(--dark-black);
+        }
+
+        .dateline {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 20px;
+            font-weight: bold;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .summary-list {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        .summary-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .summary-list li strong {
+            color: var(--primary-red);
+        }
+
+        /* Interactive JS Area */
+        .interactive-section {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #ccc;
+        }
+
+        .action-btn {
+            background-color: var(--dark-black);
+            color: var(--white);
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #333;
+        }
+
+        /* Loader */
+        .loader {
+            display: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-red);
+            margin: 20px 0;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(204,0,0,0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-red);
+            animation: spin 1s ease-in-out infinite;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Massive CTA */
+        .cta-container {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        .massive-cta {
+            display: block;
+            background-color: var(--primary-red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: 900;
+            padding: 20px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 12px rgba(204,0,0,0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .massive-cta:hover {
+            background-color: #a30000;
+            transform: scale(1.02);
+        }
+
+        .sponsored-tag {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.8rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile adjustments */
+        @media(max-width: 480px) {
+            .headline { font-size: 1.5rem; }
+            .massive-cta { font-size: 1.2rem; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        🚨 BREAKING NEWS ALERT
+    </div>
+
+    <div class="container">
+        <h1 class="headline">'Check My Vote' Founder Reveals Massive Review of 155,000 Detroit Absentee Ballot Envelopes</h1>
+        <div class="dateline">ELECTION INTEGRITY UPDATE | EXCLUSIVE SUMMARY</div>
+
+        <ul class="summary-list">
+            <li><strong>The Investigation:</strong> Phani Mantravadi, founder of 'Check My Vote', recently detailed their organization's deep-dive review of 155,000 absentee ballot envelopes originating from Detroit.</li>
+            <li><strong>The Motivation:</strong> The review was launched to ensure absolute transparency and verify that strict election integrity standards were upheld during the voting process.</li>
+            <li><strong>The Findings:</strong> Details from the WarRoom broadcast suggest critical anomalies and systemic questions that every American voter needs to see immediately.</li>
+        </ul>
+
+        <div class="interactive-section">
+            <button id="unlockBtn" class="action-btn">Tap to Unseal Full Report Details 👇</button>
+            
+            <div id="loadingStatus" class="loader">
+                <div class="spinner"></div> Accessing Secure Broadcast Details...
+            </div>
+
+            <div id="ctaWrapper" class="cta-container">
+                <a href="https://www.effectivecpmnetwork.com/z8trb6ks?key=9c87f986cc9140a70965797dc558325e" class="massive-cta">
+                    Uncover the Full Story - Continue to Our Sponsor ➔
+                </a>
+                <span class="sponsored-tag">Sponsored Content</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const unlockBtn = document.getElementById("unlockBtn");
+            const loadingStatus = document.getElementById("loadingStatus");
+            const ctaWrapper = document.getElementById("ctaWrapper");
+
+            unlockBtn.addEventListener("click", () => {
+                // 1. Hide the initial button
+                unlockBtn.style.display = "none";
+                
+                // 2. Show the loading animation
+                loadingStatus.style.display = "block";
+
+                // 3. Simulate processing/loading time to build anticipation (1.8 seconds)
+                setTimeout(() => {
+                    loadingStatus.style.display = "none";
+                    ctaWrapper.style.display = "block"; // Reveal the massive CTA
+                }, 1800);
+            });
+        });
+    </script>
+</body>
+</html>
