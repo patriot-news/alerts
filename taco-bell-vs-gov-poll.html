@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tumblr Vibe Check: Public Health</title>
+    <style>
+        /* Tumblr Dark Mode Aesthetic */
+        :root {
+            --tumblr-dark: #001935;
+            --tumblr-panel: #222e41;
+            --tumblr-accent: #00b8ff;
+            --taco-purple: #702082;
+            --text-main: #ffffff;
+            --text-muted: #8b9bb4;
+        }
+
+        body {
+            background-color: var(--tumblr-dark);
+            color: var(--text-main);
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .poll-container {
+            background-color: var(--tumblr-panel);
+            max-width: 450px;
+            width: 100%;
+            border-radius: 8px;
+            padding: 30px 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .header-tag {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            line-height: 1.3;
+            margin-bottom: 25px;
+            font-weight: bold;
+        }
+
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .poll-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-main);
+            padding: 15px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 600;
+        }
+
+        .poll-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: var(--tumblr-accent);
+        }
+
+        .results-container {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result-row {
+            margin-bottom: 15px;
+        }
+
+        .result-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .bar-bg {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            height: 24px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .fill-tb {
+            background-color: var(--taco-purple);
+        }
+
+        .fill-gov {
+            background-color: #ff4d4d;
+        }
+
+        .cta-container {
+            margin-top: 30px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .massive-cta {
+            display: block;
+            background-color: var(--tumblr-accent);
+            color: var(--tumblr-dark);
+            text-decoration: none;
+            padding: 18px 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 6px;
+            text-align: center;
+            text-transform: uppercase;
+            box-shadow: 0 4px 10px rgba(0, 184, 255, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .massive-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 184, 255, 0.6);
+        }
+
+        .sponsored-tag {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Fun animation for the existential dread */
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poll-container">
+        <span class="header-tag">Reblogged from Reality • Vibe Check</span>
+        <h1>Who do you trust more to handle a national public health crisis right now?</h1>
+        
+        <div class="poll-options" id="pollOptions">
+            <button class="poll-btn" onclick="submitPoll('tb')">Taco Bell 🌮</button>
+            <button class="poll-btn" onclick="submitPoll('gov')">The US Government 🤡</button>
+        </div>
+
+        <div class="results-container" id="resultsContainer">
+            <p style="text-align: center; font-style: italic; color: var(--text-muted); margin-bottom: 20px;">Wow, the people have spoken...</p>
+            
+            <div class="result-row">
+                <div class="result-label">
+                    <span>Taco Bell 🌮</span>
+                    <span id="tb-pct">0%</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar-fill fill-tb" id="tb-bar"></div>
+                </div>
+            </div>
+
+            <div class="result-row">
+                <div class="result-label">
+                    <span>The US Government 🤡</span>
+                    <span id="gov-pct">0%</span>
+                </div>
+                <div class="bar-bg">
+                    <div class="bar-fill fill-gov" id="gov-bar"></div>
+                </div>
+            </div>
+
+            <div class="cta-container" id="ctaContainer">
+                <a href="https://www.effectivecpmnetwork.com/uec8qwbah?key=51bba745ae20155b131466ee39800765" class="massive-cta">Continue Reading Truth &gt;&gt;</a>
+                <span class="sponsored-tag">Sponsored Content</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitPoll(choice) {
+            // Hide options
+            document.getElementById('pollOptions').style.display = 'none';
+            
+            // Show results container
+            const results = document.getElementById('resultsContainer');
+            results.style.display = 'block';
+
+            // Fixed skewed results for the "shitpost" effect
+            const tbFinal = 98;
+            const govFinal = 2;
+
+            // Trigger animations (slight delay for effect)
+            setTimeout(() => {
+                document.getElementById('tb-bar').style.width = tbFinal + '%';
+                document.getElementById('gov-bar').style.width = govFinal + '%';
+                
+                // Count up effect
+                animateValue("tb-pct", 0, tbFinal, 1500);
+                animateValue("gov-pct", 0, govFinal, 1500);
+            }, 100);
+
+            // Show CTA after bars finish filling
+            setTimeout(() => {
+                const cta = document.getElementById('ctaContainer');
+                cta.style.display = 'block';
+                // Trigger reflow
+                void cta.offsetWidth; 
+                cta.style.opacity = '1';
+                
+                // Add a little shake to the CTA for urgency
+                cta.style.animation = "shake 0.5s ease-in-out";
+            }, 1800);
+        }
+
+        function animateValue(id, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                document.getElementById(id).innerHTML = Math.floor(progress * (end - start) + start) + "%";
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
+</body>
+</html>
