@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking News Knowledge Quiz</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            /* Rich high-contrast background with subtle animated gradient */
+            background: linear-gradient(-45deg, #141E30, #243B55, #0f2027, #203a43);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Premium WOW UI Design Card - Broadcast Style */
+        .quiz-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            text-align: center;
+            border-top: 8px solid #c0392b;
+        }
+
+        .broadcast-header {
+            background: #f1f2f6;
+            padding: 15px 20px;
+            border-bottom: 2px solid #e1e2e6;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .broadcast-header span.live-badge {
+            background: #c0392b;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .quiz-content {
+            padding: 30px 30px 40px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            line-height: 1.4;
+        }
+
+        /* 2-Step Logic Elements */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .quiz-btn {
+            background: #ffffff;
+            border: 2px solid #bdc3c7;
+            padding: 18px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2c3e50;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quiz-btn:hover {
+            background: #ecf0f1;
+            border-color: #34495e;
+            transform: translateY(-2px);
+        }
+
+        /* States for JS injection */
+        .quiz-btn.correct {
+            background: #27ae60 !important;
+            color: #fff !important;
+            border-color: #27ae60 !important;
+            box-shadow: 0 10px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        .quiz-btn.wrong {
+            background: #e74c3c !important;
+            color: #fff !important;
+            border-color: #e74c3c !important;
+            opacity: 0.6;
+        }
+
+        .fact-check-badge {
+            display: none;
+            margin-top: 25px;
+            padding: 15px;
+            background: #d4efdf;
+            border-left: 5px solid #27ae60;
+            color: #145a32;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 4px;
+            text-align: left;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Routing & Auto-Scroll CTA */
+        .cta-container {
+            margin-top: 35px;
+            display: none; /* Hidden until answered */
+            opacity: 0;
+            transition: opacity 1s ease 0.2s;
+        }
+
+        .cta-button {
+            display: block;
+            text-decoration: none;
+            background: #e67e22; /* High contrast orange for CTA */
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 900;
+            padding: 20px;
+            border-radius: 8px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(230, 126, 34, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(230, 126, 34, 0.4); }
+        }
+
+        .sponsored-tag {
+            font-size: 12px;
+            color: #95a5a6;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-card">
+        <div class="broadcast-header">
+            <strong>WAR ROOM TRIVIA</strong>
+            <span class="live-badge">INTERACTIVE</span>
+        </div>
+        
+        <div class="quiz-content">
+            <h1>How much of his own money did Mike Lindell reveal he spent fighting to ban voting machines?</h1>
+            
+            <!-- Step 1: The Micro-Commitment -->
+            <div class="options-container" id="quiz-options">
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">$5 - $10 Million</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, false)">$30 - $40 Million</button>
+                <button class="quiz-btn" onclick="checkAnswer(this, true)" id="correct-btn">$60 - $80 Million</button>
+            </div>
+
+            <!-- Step 2: The Reveal & Bridge -->
+            <div class="fact-check-badge" id="fact-check">
+                ✅ FACT CHECK: TRUE! Lindell confirmed he has spent $60-80M of his own money to secure our elections.
+            </div>
+
+            <!-- Crucial CRO Routing -->
+            <div class="cta-container" id="cta-container">
+                <a href="https://www.effectivecpmnetwork.com/uec8qwbah?key=51bba745ae20155b131466ee39800765" class="cta-button" id="final-cta">Watch Full Video Report ➔</a>
+                <p class="sponsored-tag">Sponsored Content</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let answered = false;
+
+        function checkAnswer(selectedBtn, isCorrect) {
+            if (answered) return; // Prevent multiple clicks
+            answered = true;
+
+            const allBtns = document.querySelectorAll('.quiz-btn');
+            const correctBtn = document.getElementById('correct-btn');
+            
+            // Disable buttons and apply styles
+            allBtns.forEach(btn => {
+                btn.style.cursor = 'default';
+                if(btn !== correctBtn) {
+                    btn.classList.add('wrong');
+                }
+            });
+
+            // Always highlight the correct answer in green
+            correctBtn.classList.add('correct');
+            correctBtn.classList.remove('wrong');
+
+            // Show fact check
+            const factCheck = document.getElementById('fact-check');
+            factCheck.style.display = 'block';
+
+            // Show CTA
+            const ctaContainer = document.getElementById('cta-container');
+            ctaContainer.style.display = 'block';
+            
+            // Trigger fade in
+            setTimeout(() => {
+                ctaContainer.style.opacity = '1';
+                
+                // THE ROUTING & AUTO-SCROLL (CRUCIAL CRO)
+                // Scroll the massive CTA directly into the center of the viewport
+                ctaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
