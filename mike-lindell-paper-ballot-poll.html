@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Election Security Poll</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            /* Rich high-contrast background with subtle animated gradient */
+            background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0b1a26);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Premium WOW UI Design Card */
+        .poll-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .alert-badge {
+            display: inline-block;
+            background: #e74c3c;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: 26px;
+            font-weight: 900;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            line-height: 1.3;
+        }
+
+        p.context {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* 2-Step Logic Elements */
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .poll-btn {
+            background: #f1f2f6;
+            border: 2px solid #dfe4ea;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #2f3542;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .poll-btn:hover {
+            background: #1e3799;
+            color: #fff;
+            border-color: #1e3799;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(30, 55, 153, 0.2);
+        }
+
+        .results-container {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+        }
+
+        .result-bar-wrapper {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .result-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .bar-bg {
+            background: #e0e0e0;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: #27ae60;
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.1, 0.8, 0.2, 1);
+        }
+
+        .bar-fill.no {
+            background: #e74c3c;
+        }
+
+        /* Routing & Auto-Scroll CTA */
+        .cta-container {
+            margin-top: 40px;
+            opacity: 0;
+            transition: opacity 1s ease 0.5s;
+        }
+
+        .cta-button {
+            display: block;
+            text-decoration: none;
+            background: #ff4757;
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 900;
+            padding: 20px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(255, 71, 87, 0.6); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4); }
+        }
+
+        .sponsored-tag {
+            font-size: 12px;
+            color: #999;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="poll-card">
+        <div class="alert-badge">Official Opinion Poll</div>
+        <h1>Do you agree with Mike Lindell that America MUST ban voting machines and return to Hand-Counted Paper Ballots?</h1>
+        <p class="context">Mike Lindell recently revealed he spent $60-80M of his own money fighting for election security. Where do you stand?</p>
+
+        <!-- Step 1: The Micro-Commitment -->
+        <div class="options-container" id="options">
+            <button class="poll-btn" onclick="submitVote('yes')">YES, I want Paper Ballots! 🇺🇸</button>
+            <button class="poll-btn" onclick="submitVote('no')">NO, keep the voting machines.</button>
+        </div>
+
+        <!-- Step 2: Results & The Bridge -->
+        <div class="results-container" id="results">
+            <h2 style="margin-bottom: 20px; font-weight: 900; color: #1e3799;">Live Poll Results</h2>
+            
+            <div class="result-bar-wrapper">
+                <div class="result-label"><span>YES, Paper Ballots!</span> <span id="percent-yes">0%</span></div>
+                <div class="bar-bg"><div class="bar-fill" id="bar-yes"></div></div>
+            </div>
+
+            <div class="result-bar-wrapper">
+                <div class="result-label"><span>NO, Keep Machines</span> <span id="percent-no">0%</span></div>
+                <div class="bar-bg"><div class="bar-fill no" id="bar-no"></div></div>
+            </div>
+
+            <!-- Crucial CRO Routing -->
+            <div class="cta-container" id="cta-container">
+                <a href="https://www.effectivecpmnetwork.com/uec8qwbah?key=51bba745ae20155b131466ee39800765" class="cta-button" id="final-cta">Continue to Next Step ➔</a>
+                <p class="sponsored-tag">Sponsored Content</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitVote(choice) {
+            // Hide options smoothly
+            document.getElementById('options').style.display = 'none';
+            
+            // Show results
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+
+            // Simulate community consensus (High 'Yes' for this specific demographic)
+            setTimeout(() => {
+                document.getElementById('bar-yes').style.width = '94%';
+                document.getElementById('percent-yes').innerText = '94%';
+                
+                document.getElementById('bar-no').style.width = '6%';
+                document.getElementById('percent-no').innerText = '6%';
+                
+                // Show CTA
+                const ctaContainer = document.getElementById('cta-container');
+                ctaContainer.style.opacity = '1';
+
+                // THE ROUTING & AUTO-SCROLL (CRUCIAL CRO)
+                // Slight delay to allow animations to finish before scrolling
+                setTimeout(() => {
+                    ctaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 400);
+
+            }, 100); // Trigger animation almost immediately after showing
+        }
+    </script>
+</body>
+</html>
