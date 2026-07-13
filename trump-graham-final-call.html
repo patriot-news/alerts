@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BREAKING: Trump Reveals Final Conversation with Lindsey Graham</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            /* Rich high-contrast background with subtle animated gradient - Suspenseful Theme */
+            background: linear-gradient(-45deg, #000000, #1a0000, #330000, #0a0a0a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Premium WOW UI Design Card */
+        .news-card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 650px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .card-header {
+            background: #c0392b;
+            color: #fff;
+            padding: 15px 25px;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pulsing-dot {
+            height: 10px;
+            width: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: inline-block;
+            animation: blink 1.5s infinite ease-in-out;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(1.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .card-body {
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 900;
+            color: #111;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        p.summary {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        /* 2-Step Logic Elements */
+        .teaser-container {
+            position: relative;
+            margin-top: 30px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .blurred-text {
+            font-size: 18px;
+            font-style: italic;
+            color: #2c3e50;
+            line-height: 1.6;
+            filter: blur(6px);
+            user-select: none;
+            transition: filter 0.8s ease;
+        }
+
+        .reveal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            z-index: 10;
+        }
+
+        .reveal-btn {
+            background: #2c3e50;
+            color: #fff;
+            border: none;
+            padding: 16px 30px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(44, 62, 80, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .reveal-btn:hover {
+            background: #1a252f;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(26, 37, 47, 0.6);
+        }
+
+        /* Routing & Auto-Scroll CTA */
+        .cta-container {
+            margin-top: 40px;
+            display: none; /* Hidden until step 2 */
+            opacity: 0;
+            transition: opacity 1s ease 0.3s;
+        }
+
+        .cta-button {
+            display: block;
+            text-decoration: none;
+            background: #c0392b;
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 900;
+            padding: 22px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            box-shadow: 0 10px 30px rgba(192, 57, 43, 0.4);
+            animation: pulseCTA 1.5s infinite;
+        }
+
+        @keyframes pulseCTA {
+            0% { transform: scale(1); box-shadow: 0 10px 30px rgba(192, 57, 43, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(192, 57, 43, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 10px 30px rgba(192, 57, 43, 0.4); }
+        }
+
+        .sponsored-tag {
+            font-size: 12px;
+            color: #95a5a6;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="news-card">
+        <div class="card-header">
+            <span>🔴 Breaking News Alert</span>
+            <span class="pulsing-dot"></span>
+        </div>
+        
+        <div class="card-body">
+            <h1>Trump Reveals Details of Phone Call With Lindsey Graham "Moments Before" He Died</h1>
+            <p class="summary">President Trump just shared the chilling final joke Senator Graham made during their last phone call, and detailed their intense final clash over the war in Ukraine.</p>
+            
+            <!-- Step 1: The Micro-Commitment -->
+            <div class="teaser-container" id="teaser-box">
+                <div class="reveal-overlay" id="overlay">
+                    <button class="reveal-btn" onclick="unlockContent()">Reveal Final Conversation</button>
+                </div>
+                <p class="blurred-text" id="secret-text">
+                    "He called me like at 6:30... I can't die now. I still need to do the Russia sanctions, get Iran sorted out... I got a call a few hours later saying — late in the evening, at 2:00 in the morning, actually."
+                </p>
+            </div>
+
+            <!-- Step 2: Crucial CRO Routing -->
+            <div class="cta-container" id="cta-container">
+                <a href="https://www.effectivecpmnetwork.com/uec8qwbah?key=51bba745ae20155b131466ee39800765" class="cta-button">Watch Full CNN Interview ➔</a>
+                <p class="sponsored-tag">Sponsored Content</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function unlockContent() {
+            // Remove overlay and unblur text
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('secret-text').style.filter = 'blur(0px)';
+            document.getElementById('secret-text').style.color = '#000';
+            document.getElementById('secret-text').style.fontWeight = '700';
+
+            // Show CTA
+            const ctaContainer = document.getElementById('cta-container');
+            ctaContainer.style.display = 'block';
+            
+            // Trigger fade in and scroll
+            setTimeout(() => {
+                ctaContainer.style.opacity = '1';
+                
+                // THE ROUTING & AUTO-SCROLL (CRUCIAL CRO)
+                ctaContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 100);
+        }
+    </script>
+</body>
+</html>
