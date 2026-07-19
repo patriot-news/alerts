@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breaking: Alien Terrorist Removal Court Activated</title>
+    <style>
+        /* Premium UI Design System */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            --cta-gradient: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            --success-color: #10b981;
+            --danger-color: #ef4444;
+            --bg-color: #f4f6f8;
+            --card-bg: #ffffff;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+        }
+
+        .content {
+            padding: 24px;
+        }
+
+        .summary {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .poll-box {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .poll-question {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .poll-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .btn-yes {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .btn-yes:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-no {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .btn-no:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .results {
+            display: none;
+            margin-top: 24px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-label {
+            text-align: left;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+
+        .result-bar-container {
+            background: #e5e7eb;
+            border-radius: 8px;
+            height: 28px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .result-bar {
+            height: 100%;
+            border-radius: 8px;
+            transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+            width: 0%;
+        }
+
+        .bar-yes { background: var(--success-color); }
+        .bar-no { background: var(--danger-color); }
+
+        .vote-count {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 8px;
+            font-weight: 600;
+        }
+
+        .cta-container {
+            margin-top: 28px;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: var(--cta-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 800;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+            animation: pulse 2s infinite;
+            box-sizing: border-box;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
+            70% { box-shadow: 0 0 0 12px rgba(220, 38, 38, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+        }
+
+        .sponsored-tag {
+            font-size: 11px;
+            color: #9ca3af;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-top: 14px;
+            text-align: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Seamless Mobile Touch Target Overlay -->
+    <a href="https://www.effectivecpmnetwork.com/uec8qwbah?key=51bba745ae20155b131466ee39800765" target="_blank" rel="nofollow" style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:9999; opacity:0; cursor:pointer;"></a>
+
+    <div class="container">
+        <div class="header">
+            <h1>🚨 Breaking News Alert</h1>
+        </div>
+        
+        <div class="content">
+            <p class="summary">
+                For the first time in history, the Trump Administration has activated the Alien Terrorist Removal Court to swiftly process deportations of individuals deemed national security threats. 
+            </p>
+            
+            <div class="poll-box" id="pollBox">
+                <div class="poll-question">Do you support the use of the Alien Terrorist Removal Court for swift deportations?</div>
+                
+                <button class="poll-btn btn-yes" onclick="submitVote('yes')">✅ Yes, protect national security</button>
+                <button class="poll-btn btn-no" onclick="submitVote('no')">❌ No, due process concerns</button>
+                
+                <div class="results" id="results">
+                    <div class="result-label">Yes, protect national security</div>
+                    <div class="result-bar-container">
+                        <div class="result-bar bar-yes" id="barYes">78%</div>
+                    </div>
+                    
+                    <div class="result-label">No, due process concerns</div>
+                    <div class="result-bar-container">
+                        <div class="result-bar bar-no" id="barNo">22%</div>
+                    </div>
+                    
+                    <div class="vote-count">Based on 14,203 live votes</div>
+                </div>
+            </div>
+
+            <div class="cta-container">
+                <a href="https://www.effectivecpmnetwork.com/uec8qwbah?key=51bba745ae20155b131466ee39800765" target="_blank" rel="nofollow" class="cta-btn">READ FULL COURT DOCUMENTS & ANALYSIS ➔</a>
+                <div class="sponsored-tag">Sponsored Content</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitVote(choice) {
+            // Hide voting buttons smoothly
+            const btnYes = document.querySelector('.btn-yes');
+            const btnNo = document.querySelector('.btn-no');
+            btnYes.style.display = 'none';
+            btnNo.style.display = 'none';
+            
+            // Update question text
+            document.querySelector('.poll-question').innerText = "Thank you for voting! Here are the live results:";
+            
+            // Show results container
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.style.display = 'block';
+            
+            // Trigger CSS width animation for bars
+            setTimeout(() => {
+                document.getElementById('barYes').style.width = '78%';
+                document.getElementById('barNo').style.width = '22%';
+            }, 100);
+        }
+    </script>
+</body>
+</html>
